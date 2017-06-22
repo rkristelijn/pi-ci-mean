@@ -64,11 +64,18 @@ git push -u origin master
 # Sources
 Back to [Table of Contents](#table-of-contents)
 
-http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/
-https://www.toptal.com/raspberry-pi/how-to-turn-your-raspberry-pi-into-a-development-server
+## Git
+* Some [problem I had to solve](https://stackoverflow.com/questions/11621768/how-can-i-make-git-accept-a-self-signed-certificate) with git that didn't accept self signed certificate with `git config http.sslVerify false`. Probably not a good way to solve it, but it worked.
+* [forgot why](http://www.instructables.com/id/GitPi-A-Private-Git-Server-on-Raspberry-Pi/)
 
-;ci
-http://thesociablegeek.com/node/github-continuous-deployment-to-a-raspberry-pi/
+## Markdown
+* I didn't remember all markdown tricks used so I used the [Markdown Guide](https://help.ghost.org/hc/en-us/articles/224410728-Markdown-Guide)
 
-;git
-http://www.instructables.com/id/GitPi-A-Private-Git-Server-on-Raspberry-Pi/
+## MongoDB
+* [forgot why](http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/)
+
+## MEAN
+* [forgot why](https://www.toptal.com/raspberry-pi/how-to-turn-your-raspberry-pi-into-a-development-server)
+
+## Continuous Integration
+* [forgot why](http://thesociablegeek.com/node/github-continuous-deployment-to-a-raspberry-pi/)
