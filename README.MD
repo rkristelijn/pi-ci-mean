@@ -9,7 +9,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 
 Probably I'm still working on it, but this is how far I came, or care to write down.
 
-##Set-up:
+## Set-up
 * Raspberry pi - ehm...  
 
 install raspbian cli
