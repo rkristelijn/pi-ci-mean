@@ -1,7 +1,26 @@
+#Introduction
+These are my notes to install a full blown mean stack (MongoDB, Express, Angular4, Node) on the pi, including git, some build and deploy tool. I keep these notes to be able to quickly set up, or reinstall my environment. 
+
+# Table of Contents
+1. [Example](#example)
+2. [Example2](#example2)
+3. [Third Example](#third-example)
+
+## Example
+## Example2
+## Third Example
+
+
+Probably I'm still working on it, but this is how far I came, or care to write down.
+
+##Set-up:
+* Raspberry pi - ehm...  
+
 install raspbian cli
 sudo raspi-config
-; change hostname to 1337-pi
-; change password to xsme2nrg
+
+* change hostname to 1337-pi
+* change password to something else than the default raspberry
 
 sudo apt-get update
 sudo apt-get upgrade
@@ -45,7 +64,7 @@ git commit -m 'Initial commit'
 git push -u origin master
 
 
-;sources
+#Sources
 http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/
 https://www.toptal.com/raspberry-pi/how-to-turn-your-raspberry-pi-into-a-development-server
 
