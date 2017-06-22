@@ -4,15 +4,14 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 # Table of Contents
 1. [Setup](#setup)
 3. [Install OS](#install-os)
-  1. [Configure OS](#configure-os)
-  2. [Login remotely](#login-remotely)
+  * [Configure OS](#configure-os)
+  * [Login remotely](#login-remotely)
 2. [Sources](#sources)
-
-
 
 Probably I'm still working on it, but this is how far I came, or care to write down.
 
 ## Setup
+
 Back to [Table of Contents](#table-of-contents)
 
 * Raspberry pi - ehm... *model 3 Model B* (see [Pi](#pi) hardware information in [Sources](#sources))
@@ -21,6 +20,9 @@ Back to [Table of Contents](#table-of-contents)
 * OS: 
 
 # Install OS
+
+Back to [Table of Contents](#table-of-contents)
+
 Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift to start in NOOBS. My current version is v1.9 (Mar 18 2016) and I know there's a new NOOBS version, but I only need to install Raspbian Lite (A port of Debian jessie for the Raspberry Pi (minimal version), so no overhead of GUI. After all... I'm not a *User* that needs a graphical interface. I just want to run the server as slim as possible.
 
 **In short**:
@@ -31,6 +33,9 @@ Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift
 4. Wait and reboot when asked (`Ok)`
 
 ## Configure OS
+
+Back to [Table of Contents](#table-of-contents)
+
 After reboot the system comes up, autodetects LAN networking, IP, etc and starts with a prompt for login. After login, we start the configuration menu for changing the password and the hostname. This will both update `/etc/hosts` and `/etc/hostname`.
 
 **In short**:
@@ -47,6 +52,9 @@ because of NOOBS:
 7. Advanced > Expand Filesystem
 
 ## Login Remotely
+
+Back to [Table of Contents](#table-of-contents)
+
 Install putty and connect to your Pi. If that works, it is time to relocate the Pi to run headless. You don't need the keyboard/mouse/monitor to further configure, you do this remotely. Because my router that takes care of handing the IP addresses (DHCP) and of the hostname-IP-address translation (DNS), I can always find my Pi using `hostname.local` in both the browser and other tools. 
 
 ** In short**:
@@ -58,12 +66,19 @@ Install putty and connect to your Pi. If that works, it is time to relocate the 
   * Accept certificate
 2. After checking SSH works;
   * shutdown Pi using `sudo halt -p`
-Now you can disconnect the Pi, connect it somewhere on the LAN in headless mode
-open
-## op
+  * Move Pi to secure place to run in headless mode
 
-sudo apt-get update
-sudo apt-get upgrade
+## Update 
+To make sure you are up to date with the software that we are going to install using 
+
+** In Short **:
+
+1. sudo apt-get update
+1. sudo apt-get upgrade
+
+# Webserver
+
+
 sudo apt-get install nginx
 ; nginx for static files, node for applications; seems better to split this
 
