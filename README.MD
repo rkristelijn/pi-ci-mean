@@ -11,7 +11,9 @@ Probably I'm still working on it, but this is how far I came, or care to write d
 ## Setup
 Back to [Table of Contents](#table-of-contents)
 
-* Raspberry pi - ehm... model 3 Model B ![used procmeminfo to find out that I have ][cloud]  
+* Raspberry pi - ehm... *model 3 Model B* (see [Pi](#pi) hardware information in [Sources](#sources))
+* Network - wired
+* Mode - headless  
 
 install raspbian cli
 sudo raspi-config
@@ -89,6 +91,6 @@ Back to [Table of Contents](#table-of-contents)
 
 
 [//]: # (R E F E R E N C E S)
-[cloud]: http://xgkfq28377.i.lithium.com/skins/images/4625BFF6D7B6FC17E1CAA1067E7B2290/base/images/icon_board.png 
+[cloud]: http://xgkfq28377.i.lithium.com/skins/images/4625BFF6D7B6FC17E1CAA1067E7B2290/base/images/icon_board.png "Title" 
 
 
