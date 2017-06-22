@@ -3,8 +3,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 
 # Table of Contents
 1. [Setup](#Setup)
-2. [Example2](#example2)
-3. [Third Example](#third-example)
+2. [Sources](#Sources)
 
 
 Probably I'm still working on it, but this is how far I came, or care to write down.
@@ -60,7 +59,7 @@ git commit -m 'Initial commit'
 git push -u origin master
 
 
-#Sources
+# Sources
 http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/
 https://www.toptal.com/raspberry-pi/how-to-turn-your-raspberry-pi-into-a-development-server
 
