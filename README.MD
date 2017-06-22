@@ -2,14 +2,14 @@
 These are my notes to install a full blown mean stack (MongoDB, Express, Angular4, Node) on the pi, including git, some build and deploy tool. I keep these notes to be able to quickly set up, or reinstall my environment. 
 
 # Table of Contents
-1. [Set-up](#Set-up)
+1. [Setup](#Setup)
 2. [Example2](#example2)
 3. [Third Example](#third-example)
 
 
 Probably I'm still working on it, but this is how far I came, or care to write down.
 
-## Set-up
+## Setup
 * Raspberry pi - ehm...  
 
 install raspbian cli
