@@ -11,7 +11,7 @@ Probably I'm still working on it, but this is how far I came, or care to write d
 ## Setup
 Back to [Table of Contents](#table-of-contents)
 
-* Raspberry pi - ehm...  
+* Raspberry pi - ehm... <sup>1</sup>  
 
 install raspbian cli
 sudo raspi-config
@@ -70,6 +70,7 @@ Back to [Table of Contents](#table-of-contents)
 
 ## Markdown
 * I didn't remember all markdown tricks used so I used the [Markdown Guide](https://help.ghost.org/hc/en-us/articles/224410728-Markdown-Guide)
+* This [resource](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is a [Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) that has all tricks you can do that works on github
 
 ## MongoDB
 * [forgot why](http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/)
