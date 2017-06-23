@@ -195,14 +195,14 @@ We don't want to be editing config files manually, I mean, we could, however it 
 2. `sudo npm install -g yo`
 2. `sudo npm install -g generator-meanjs`
 3. `yo meanjs`
-	4. version: 0.4.2 
-	5. location: mean (default)
-	6. application name: MEAN (default)
-	7. description: (default)
-	8. default
-	9. default
-	10. generate sample CRUD: Y
-	11. generate sample chat: Y
+	* version: 0.4.2 
+	* location: mean (default)
+	* application name: MEAN (default)
+	* description: (default)
+	* default
+	* default
+	* generate sample CRUD: Y
+	* generate sample chat: Y
 4. `grunt`
 
 # Run all as services on boot time
