@@ -9,6 +9,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
   * [Update](#update)
 2. [Webserver](#webserver)
 3. [MongoDB](#mongodb)
+4. [MEAN](#mean)
 3. [Sources](#sources)
 
 Probably I'm still working on it, but this is how far I came, or care to write down.
@@ -60,7 +61,7 @@ Back to [Table of Contents](#table-of-contents)
 
 Install putty and connect to your Pi. If that works, it is time to relocate the Pi to run headless. You don't need the keyboard/mouse/monitor to further configure, you do this remotely. Because my router that takes care of handing the IP addresses (DHCP) and of the hostname-IP-address translation (DNS), I can always find my Pi using `hostname.local` in both the browser and other tools. 
 
-** In short**:
+**In short**:
 
 1. Connect with putty
   * Host Name (or IP address): `1337-pi.local`
@@ -77,7 +78,7 @@ Back to [Table of Contents](#table-of-contents)
 
 To make sure you are up to date with the software that we are going to install using `apt-get`. Next to that we need a proper editor, which is vim.
 
-** In Short **:
+**In Short**:
 
 1. `sudo apt-get update`
 2. `sudo apt-get upgrade`
@@ -124,7 +125,7 @@ Now we need to create a `package.json` file (`npm init`). After that we create t
     console.log('Server running');
     
 
-** In short **:
+**In short**:
 
 Installation
 
@@ -182,7 +183,9 @@ For a node test, use this script:
 5. `vim mongodb.js`, paste code, save and exit
 6. `sudo node mongodb.js`
 
-# MEAN generator and scaffolding
+# MEAN
+
+Back to [Table of Contents](#table-of-contents)
 
 We don't want to be editing config files manually, I mean, we could, however it is easy to make a mistake. We just use a scaffolding tool like [meanjs](http://meanjs.org/generator.html). For Yo we need a git client.
 
@@ -192,9 +195,19 @@ We don't want to be editing config files manually, I mean, we could, however it 
 2. `sudo npm install -g yo`
 2. `sudo npm install -g generator-meanjs`
 3. `yo meanjs`
+	4. version: 0.4.2 
+	5. location: mean (default)
+	6. application name: MEAN (default)
+	7. description: (default)
+	8. default
+	9. default
+	10. generate sample CRUD: Y
+	11. generate sample chat: Y
 4. `grunt`
 
 # Run all as services on boot time
+
+Back to [Table of Contents](#table-of-contents)
 
 Todo: see [this](http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/)
 
