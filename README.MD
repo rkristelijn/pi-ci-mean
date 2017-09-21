@@ -2,19 +2,20 @@
 These are my notes to install a full blown mean stack (MongoDB, Express, Angular4, Node) on the pi, including git, some build and deploy tool. I keep these notes to be able to quickly set up, or reinstall my environment. 
 
 # Table of Contents
-0. [Setup](#setup)
-1. [Install OS](#install-os)
+0. [SETUP](#setup)
+1. [GETTING STARTED](#getting-started)
+2. [INSTALL OS](#install-os)
   * [Configure OS](#configure-os)
   * [Login remotely](#login-remotely)
   * [Update](#update)
-2. [Webserver](#webserver)
-3. [MongoDB](#mongodb)
-4. [MEAN](#mean)
-3. [Sources](#sources)
+3. [Webserver](#webserver)
+4. [MongoDB](#mongodb)
+5. [MEAN](#mean)
+6. [Sources](#sources)
 
 Probably I'm still working on it, but this is how far I came, or care to write down.
 
-## Setup
+## SETUP
 
 Back to [Table of Contents](#table-of-contents)
 
@@ -23,7 +24,7 @@ Back to [Table of Contents](#table-of-contents)
 * Mode - headless (no monitor, nor keyboard)
 * OS: 
 
-# Install OS
+# INSTALL OS
 
 Back to [Table of Contents](#table-of-contents)
 
@@ -84,7 +85,7 @@ To make sure you are up to date with the software that we are going to install u
 2. `sudo apt-get upgrade`
 3. `sudo apt-get install vim`
 
-# Webserver
+# WEBSERVER
 
 Back to [Table of Contents](#table-of-contents)
 
