@@ -26,7 +26,7 @@ My goal:
       |                                                                    |
       +--------------------------------------------------------------------+
 
-[asciiflow.com/](http://asciiflow.com/) 
+Created via[asciiflow.com](http://asciiflow.com/) 
 
 # Table of Contents
 0. [Setup](#setup)
@@ -99,6 +99,28 @@ Install putty and connect to your Pi. If that works, it is time to relocate the 
   * Move Pi to secure place to run in headless mode
 
 Tip: use `windows+r` type `putty pi@1337-pi.local`
+
+## Set up Windows Sharing (SMB or Samba)
+
+Back to [Table of Contents](#table-of-contents)
+
+Full howto [here](https://raspberrypihq.com/how-to-share-a-folder-with-a-windows-computer-from-a-raspberry-pi/)
+
+**In Short**:
+
+1. `sudo apt-get install samba samba-common-bin`
+2. `sudo nano /etc/samba/smb.conf`
+3. Edit below, save and exit:
+
+  workgroup = WORKGROUP
+  wins support = yes
+  writeable = yes
+
+4. `sudo smbpasswd -a pi`
+
+On your windows machine:
+
+`net use u: \\1337-pi.local\pi /user:pi`
 
 ## Update your software
 
