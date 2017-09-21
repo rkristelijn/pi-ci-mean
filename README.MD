@@ -1,13 +1,36 @@
 # Introduction
-These are my notes to install a full blown mean stack (MongoDB, Express, Angular4, Node) on the pi, including git, some build and deploy tool. I keep these notes to be able to quickly set up, or reinstall my environment. 
+These are my notes to install a full blown mean stack (MongoDB, Express, Angular 4+, Node 8+) on the pi, including git, some build and deploy tool. I keep these notes to be able to quickly set up, or reinstall my environment. 
+
+WORK IN PROGRESS
+
+My goal:
+      +--------------------------------------------------------------------+
+      |                                                                    |
+      |                                                                    |
+      | +------------------+                         +------------+        |
+      | |Visual Studio Code|                         |Github.com  |        |
+      | +------------------+                      +-^+            |        |
+      | | Windows 10       +----------+           |  +------------+        |
+      | +------------------+          |           |                        |
+      |                               |           |                        |
+      |                               |           |                        |
+      |                            +--v--+------+-+---+                    |
+      |                            | SMB | MEAN | git |                    |
+      |                            +-----+------+-----+                    |
+      |                            |   File System    |                    |
+      |                            +------------------+                    |
+      |                            |   Raspberry Pi   |                    |
+      |                            +------------------+                    |
+      |                                                                    |
+      |                                                                    |
+      +--------------------------------------------------------------------+
+
+[asciiflow.com/](http://asciiflow.com/) 
 
 # Table of Contents
-0. [SETUP](#setup)
-1. [GETTING STARTED](#getting-started)
-2. [INSTALL OS](#install-os)
-  * [Configure OS](#configure-os)
-  * [Login remotely](#login-remotely)
-  * [Update](#update)
+0. [Setup](#setup)
+1. [Getting Started](#getting-started)
+2. [Install OS](#install-os)
 3. [Webserver](#webserver)
 4. [MongoDB](#mongodb)
 5. [MEAN](#mean)
@@ -19,23 +42,24 @@ Probably I'm still working on it, but this is how far I came, or care to write d
 
 Back to [Table of Contents](#table-of-contents)
 
-* Raspberry pi - ehm... *model 3 Model B* (see [Pi](#pi) hardware information in [Sources](#sources))
-* Network - wired
-* Mode - headless (no monitor, nor keyboard)
-* OS: 
+* Raspberry pi: ehm... *model 3 Model B* (see [Pi](#pi) hardware information in [Sources](#sources))
+* Network: wired
+* Mode: headless (no monitor, nor keyboard)
+* OS: Raspbian Jessy
+* Features: Latest MEAN (MongoDB, Express, Angular 4+, Node 8+), Samba, Git (todo: git hook + auto test + auto deploy)
 
 # INSTALL OS
 
 Back to [Table of Contents](#table-of-contents)
 
-Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift to start in NOOBS. My current version is v1.9 (Mar 18 2016) and I know there's a new NOOBS version, but I only need to install Raspbian Lite (A port of Debian jessie for the Raspberry Pi (minimal version), so no overhead of GUI. After all... I'm not a *User* that needs a graphical interface. I just want to run the server as slim as possible.
+Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift to start in NOOBS. My current version is v1.9 (Mar 18 2016) and I know there's a new NOOBS version, but I only need to install Raspbian Lite (A port of Debian jessie for the Raspberry Pi (minimal version), so no overhead of GUI. After all... I'm not a *User* that needs a graphical interface. I just want to run the server as slim as possible so all resources go to the server.
 
 **In short**:
 
 1. Start in NOOBS by holding `SHIFT`
 2. Choose Raspbian Lite
 3. Overwrite current OS: Y
-4. Wait and reboot when asked (`Ok)`
+4. Wait and reboot when asked `(Ok)`
 
 ## Configure OS
 
@@ -73,7 +97,9 @@ Install putty and connect to your Pi. If that works, it is time to relocate the 
   * shutdown Pi using `sudo halt -p`
   * Move Pi to secure place to run in headless mode
 
-## Update 
+Tip: use `windows+r` type `putty pi@1337-pi.local`
+
+## Update your software
 
 Back to [Table of Contents](#table-of-contents)
 
@@ -83,6 +109,9 @@ To make sure you are up to date with the software that we are going to install u
 
 1. `sudo apt-get update`
 2. `sudo apt-get upgrade`
+
+Optional: if you want vim instead of vi (skip if you use nano)
+
 3. `sudo apt-get install vim`
 
 # WEBSERVER
