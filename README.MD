@@ -4,6 +4,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 WORK IN PROGRESS
 
 My goal:
+
       +--------------------------------------------------------------------+
       |                                                                    |
       |                                                                    |
