@@ -74,12 +74,7 @@ After reboot the system comes up, autodetects LAN networking, IP, etc and starts
 2. Start the config menu: `sudo raspi-config`
 3. Change default password 
 4. Change hostname to `1337-pi`
-5. Boot Options > Desktop / CLI > Console Autologin
 6. Interfacing Options > SSH > Yes, Enable SSH Server
-
-because of NOOBS:
-
-7. Advanced > Expand Filesystem
 
 ## Login Remotely
 
@@ -100,6 +95,8 @@ Install putty and connect to your Pi. If that works, it is time to relocate the 
 
 Tip: use `windows+r` type `putty pi@1337-pi.local`
 
+For my iPad I use Termius
+
 ## Set up Windows Sharing (SMB or Samba)
 
 Back to [Table of Contents](#table-of-contents)
@@ -111,16 +108,27 @@ Full howto [here](https://raspberrypihq.com/how-to-share-a-folder-with-a-windows
 1. `sudo apt-get install samba samba-common-bin`
 2. `sudo nano /etc/samba/smb.conf`
 3. Edit below, save and exit:
-
-  workgroup = WORKGROUP
-  wins support = yes
-  writeable = yes
-
+  * `wins support = yes` section `[global]` was `no`
+  * `writeable = yes` section `[homes]` was `no`
 4. `sudo smbpasswd -a pi`
 
 On your windows machine:
 
 `net use u: \\1337-pi.local\pi /user:pi`
+
+## Install Git
+
+`sudo apt-get install git`
+
+Configure your git instance:
+
+  `git config --global user.email "you@example.com"`
+  `git config --global user.name "Your Name"`
+
+Todo: have git or ssh [remember my password](https://stackoverflow.com/questions/21956750/secure-push-and-pull-with-no-password-git)
+
+Clone a git repo:
+git clone
 
 ## Update your software
 
@@ -242,9 +250,11 @@ Back to [Table of Contents](#table-of-contents)
 
 We don't want to be editing config files manually, I mean, we could, however it is easy to make a mistake. We just use a scaffolding tool like [meanjs](http://meanjs.org/generator.html). For Yo we need a git client.
 
+todo: check if you have git installed!
+
 1. `cd /home/pi`
 2. `rm -rf *`
-3. `sudo apt-get install git`
+3. optional: `sudo apt-get install git`
 2. `sudo npm install -g yo`
 2. `sudo npm install -g generator-meanjs`
 3. `yo meanjs`
