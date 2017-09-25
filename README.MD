@@ -34,8 +34,8 @@ Back to [Table of Contents](#table-of-contents)
     +------------------+------>   Raspberry Pi   |
                               +------------------+
 
-Strengths: Robust, easy to set up
-Weaknesses: You need to be able to connect to the Pi, either carry it around using a UTP cross-cable with bridged network, or carry around a switch or hub if you are using an open network. It just doesn't work in my office so my Pi sits at home accessable via port forwarding.
+* Strengths: Robust, easy to set up
+* Weaknesses: You need to be able to connect to the Pi, either carry it around using a UTP cross-cable with bridged network, or carry around a switch or hub if you are using an open network. It just doesn't work in my office so my Pi sits at home accessable via port forwarding.
 
 ## Alternatives
 
@@ -104,7 +104,6 @@ Back to [Table of Contents](#table-of-contents)
 Not yet tried cloud, as my own hosting provider doesn't support node, only PHP. Maybe I'll switch to Heroku, AmazonWS, Google Cloud Platform... in near future. But still I need to have a dev/test environment. These offerings cost money...
 
 Graphics created via [asciiflow.com](http://asciiflow.com/) 
-
 
 ## SETUP
 
