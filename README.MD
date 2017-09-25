@@ -3,15 +3,30 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 
 WORK IN PROGRESS
 
+# Table of Contents
+0. [Approach Vector](#approach-vector)
+0. [Setup](#setup)
+1. [Getting Started](#getting-started)
+2. [Hardware](#hardware)
+2. [Operating System](#operating-system)
+3. [Webserver](#webserver)
+4. [MongoDB](#mongodb)
+5. [MEAN](#mean)
+6. [Sources](#sources)
+
+# APPROACH VECTOR
+
 My personal goals: 
 
 * Improve on my full-stack javascript skills by practise
 * Prove small and medium companies can benefit from smart solutions with the same functionalties as a full blown ERP or CRM (like Oracle, Microsoft,Salesforce, Workday, SAP etc)
-* Redifine the current solution stack: VMWare images (virtualization) running Windows, that run Java (virtualization) that run packaged applications that need to interconnect with different packaged applications via middleware using webservices to create composit applications (virtualization)... Why not one solution for all processes?
+* Redefine the current solution stack: VMWare images (virtualization) running Windows, that run Java (virtualization) that run packaged applications that need to interconnect with different packaged applications via middleware using webservices to create composit applications (virtualization)... Why not one solution for all processes?
 
 This project's goal: Create a platform to minimize cost and powerusage and maximize flexibility, performance and usability.
 
 ## The project's offering:
+
+Back to [Table of Contents](#table-of-contents)
 
                               +-----+------+-----+
     +------------------+      | SMB | MEAN | git |        +------------+
@@ -24,12 +39,13 @@ This project's goal: Create a platform to minimize cost and powerusage and maxim
 Strengths: Robust, easy to set up
 Weaknesses: You need to be able to connect to the Pi, either carry it around using a UTP cross-cable with bridged network, or carry around a switch or hub if you are using an open network. It just doesn't work in my office so my Pi sits at home accessable via port forwarding.
 
-
 ## Alternatives
 
 I have also tried the following offerings:
 
 ### Local MEAN stack
+
+Back to [Table of Contents](#table-of-contents)
 
     +----------------------------------+
     |Visual Studio Code                |
@@ -46,6 +62,8 @@ Weaknesses: rebuilding takes a lot of time, test data on local db, need to run s
 
 ### Local Git repository
 
+Back to [Table of Contents](#table-of-contents)
+
                                             +--------+
                               +-----+------+-v---+    |
     +------------------+      | SMB | MEAN | git +----+
@@ -59,6 +77,8 @@ Strengths: private code
 Weaknesses: If I want to rebuild by Pi, I need additional backup steps
 
 ### Virtual Pi
+
+Back to [Table of Contents](#table-of-contents)
 
 I have tried to use QEMU for a virtual Pi however it is extremely slow because of the mem cap of 256MB of the kernel.
 
@@ -81,21 +101,12 @@ Weaknesses: extremely slow
 
 ### Cloud
 
+Back to [Table of Contents](#table-of-contents)
+
 Not yet tried cloud, as my own hosting provider doesn't support node, only PHP. Maybe I'll switch to Heroku, AmazonWS, Google Cloud Platform... in near future. But still I need to have a dev/test environment. These offerings cost money...
 
 Graphics created via [asciiflow.com](http://asciiflow.com/) 
 
-# Table of Contents
-0. [Setup](#setup)
-1. [Getting Started](#getting-started)
-2. [Hardware](#hardware)
-2. [Operating System](#operating-system)
-3. [Webserver](#webserver)
-4. [MongoDB](#mongodb)
-5. [MEAN](#mean)
-6. [Sources](#sources)
-
-Probably I'm still working on it, but this is how far I came, or care to write down.
 
 ## SETUP
 
@@ -133,6 +144,12 @@ So ARM is a simpler architecture, leading to small silicon area and lots of powe
 |  Weight (g) | 31 | 23 | 45 | 45 | 45 | 45 | 45 | 7 | 7 | 7 | 9 | 9 | 9 |
 
 Data table to markdown using [google sheet plugin](https://chrome.google.com/webstore/detail/markdowntablemaker/cofkbgfmijanlcdooemafafokhhaeold?hl=en).
+
+Different types of the Pi:
+
+![Pi Models A B](README.MD.IMAGES/Pi_Models_A_B.jpg)
+
+[source](https://www.element14.com/community/community/raspberry-pi/blog/2016/11/21/how-to-identify-which-model-of-the-raspberry-pi-you-have)
 
 # OPERATING SYSTEM
 
@@ -427,3 +444,6 @@ git remote add origin git@bitbucket.org:USER/REPO.git
 git add .
 git commit -m 'Initial commit'
 git push -u origin master
+
+# CHEAT SHEETS
+* [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
