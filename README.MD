@@ -31,7 +31,8 @@ Created via [asciiflow.com](http://asciiflow.com/)
 # Table of Contents
 0. [Setup](#setup)
 1. [Getting Started](#getting-started)
-2. [Install OS](#install-os)
+2. [Hardware](#hardware)
+2. [Operating System](#operating-system)
 3. [Webserver](#webserver)
 4. [MongoDB](#mongodb)
 5. [MEAN](#mean)
@@ -49,9 +50,34 @@ Back to [Table of Contents](#table-of-contents)
 * OS: Raspbian Jessy
 * Features: Latest MEAN (MongoDB, Express, Angular 4+, Node 8+), Samba, Git (todo: git hook + auto test + auto deploy)
 
-# INSTALL OS
+# HARDWARE
 
 Back to [Table of Contents](#table-of-contents)
+
+The Raspberry Pi is a series of small single-board computers developed in the United Kingdom by the Raspberry Pi Foundation to promote the teaching of basic computer science in schools and in developing countries. The original model became far more popular than anticipated, selling outside of its target market for uses such as robotics. Peripherals (including keyboards, mice and cases) are not included with the Raspberry Pi. Some accessories however have been included in several official and unofficial bundles.
+According to the Raspberry Pi Foundation, over 5 million Raspberry Pis have been sold before February 2015, making it the best-selling British computer. By November 2016 they had sold 11 million units. [source](https://en.wikipedia.org/wiki/Raspberry_Pi)
+
+The latest model in 2017 is the Pi3. I personally like the Pi in general because smart people put a lot of effort in optimizing the computer board to reduce not only the costs, but indirectly also optimizing squeezing as much as computing power in small circuits. Also there are no moving parts (no fan, no spinning harddisk). The cpu doesn't need cooling, so less power consumption. Also it runs of 5V, so I can power the board from my USB connection. Also there are many applications for the board and the information is all accross the web.
+
+The Pi uses a differt CPU than a plain PC, this is why you are unable to run Windows 10 from a single board. Not sure about a [Pi cluster](http://www.zdnet.com/article/build-your-own-supercomputer-out-of-raspberry-pi-boards/). The CPU used in the Pi is ARM (Advanced RISC Machine). RISC is Reduced Instruction Set Computing, while an x86 processor is CISC (Complex Instruction Set Computing).
+
+Complex Instruction Set Computer (CISC) processors, like the x86, have a rich instruction set capable of doing complex things with a single instruction. Such processors often have significant amounts of internal logic that decode machine instructions to sequences of internal operations (microcode).
+RISC architectures, in contrast, have a smaller number of more general purpose instructions, that might be executed with significantly fewer transistors, making the silicon cheaper and more power efficient. Like other RISC architectures, ARM cores have a large number of general-purpose registers and many instructions execute in a single cycle. It has simple addressing modes, where all load/store addresses can be determined from register contents and instruction fields. [source](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.den0013d/index.html)
+
+The core difference between those in this aspect is that ARM instructions operate only on registers with a few instructions for loading and saving data from / to memory while x86 can operate on directly memory as well. Up until v8 ARM was a native 32 bit architecture, favoring four byte operations over others.
+So ARM is a simpler architecture, leading to small silicon area and lots of power save features while x86 becoming a power beast in terms of both power consumption and production. [source](https://stackoverflow.com/questions/14794460/how-does-the-arm-architecture-differ-from-x86)
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+# OPERATING SYSTEM
+
+Back to [Table of Contents](#table-of-contents)
+
+## Install OS
 
 Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift to start in NOOBS. My current version is v1.9 (Mar 18 2016) and I know there's a new NOOBS version, but I only need to install Raspbian Lite (A port of Debian jessie for the Raspberry Pi (minimal version), so no overhead of GUI. After all... I'm not a *User* that needs a graphical interface. I just want to run the server as slim as possible so all resources go to the server.
 
@@ -95,7 +121,7 @@ Install putty and connect to your Pi. If that works, it is time to relocate the 
 
 Tip: use `windows+r` type `putty pi@1337-pi.local`
 
-For my iPad I use Termius
+For my iPad I use [Termius](https://itunes.apple.com/us/app/termius-ssh-mosh-and-telnet-client/id549039908?mt=8)
 
 ## Set up Windows Sharing (SMB or Samba)
 
@@ -110,11 +136,11 @@ Full howto [here](https://raspberrypihq.com/how-to-share-a-folder-with-a-windows
 3. Edit below, save and exit:
   * `wins support = yes` section `[global]` was `no`
   * `writeable = yes` section `[homes]` was `no`
-4. `sudo smbpasswd -a pi`
+4. `sudo smbpasswd -a pi` to create a smb password
 
-On your windows machine:
+On your Windows machine:
 
-`net use u: \\1337-pi.local\pi /user:pi`
+`net use u: \\1337-pi.local\pi /user:pi` or use the Windows GUI to map a share to a drive letter.
 
 ## Install Git
 
@@ -144,6 +170,9 @@ To make sure you are up to date with the software that we are going to install u
 Optional: if you want vim instead of vi (skip if you use nano)
 
 3. `sudo apt-get install vim`
+
+## Backup and restore
+Todo: how to backup and restore my pi
 
 # WEBSERVER
 
