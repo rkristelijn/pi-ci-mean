@@ -1,8 +1,6 @@
 # Introduction
 These are my notes to install a full blown mean stack (MongoDB, Express, Angular 4+, Node 8+) on the Raspberry Pi. I keep these notes to be able to quickly set up, or reinstall my environment. 
 
-WORK IN PROGRESS
-
 # Table of Contents
 0. [Approach Vector](#approach-vector)
 1. [Setup](#setup)
