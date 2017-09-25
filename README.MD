@@ -1,32 +1,89 @@
 # Introduction
-These are my notes to install a full blown mean stack (MongoDB, Express, Angular 4+, Node 8+) on the pi, including git, some build and deploy tool. I keep these notes to be able to quickly set up, or reinstall my environment. 
+These are my notes to install a full blown mean stack (MongoDB, Express, Angular 4+, Node 8+) on the Raspberry Pi. I keep these notes to be able to quickly set up, or reinstall my environment. 
 
 WORK IN PROGRESS
 
-My goal:
+My personal goals: 
 
-      +--------------------------------------------------------------------+
-      |                                                                    |
-      |                                                                    |
-      | +------------------+                         +------------+        |
-      | |Visual Studio Code|                         |Github.com  |        |
-      | +------------------+                      +-^+            |        |
-      | | Windows 10       +----------+           |  +------------+        |
-      | +------------------+          |           |                        |
-      |                               |           |                        |
-      |                               |           |                        |
-      |                            +--v--+------+-+---+                    |
-      |                            | SMB | MEAN | git |                    |
-      |                            +-----+------+-----+                    |
-      |                            |   File System    |                    |
-      |                            +------------------+                    |
-      |                            |   Raspberry Pi   |                    |
-      |                            +------------------+                    |
-      |                                                                    |
-      |                                                                    |
-      +--------------------------------------------------------------------+
+* Improve on my full-stack javascript skills by practise
+* Prove small and medium companies can benefit from smart solutions with the same functionalties as a full blown ERP or CRM (like Oracle, Microsoft,Salesforce, Workday, SAP etc)
+* Redifine the current solution stack: VMWare images (virtualization) running Windows, that run Java (virtualization) that run packaged applications that need to interconnect with different packaged applications via middleware using webservices to create composit applications (virtualization)... Why not one solution for all processes?
 
-Created via [asciiflow.com](http://asciiflow.com/) 
+This project's goal: Create a platform to minimize cost and powerusage and maximize flexibility, performance and usability.
+
+## The project's offering:
+
+                              +-----+------+-----+
+    +------------------+      | SMB | MEAN | git |        +------------+
+    |Visual Studio Code|      +-----+------+-----+        |Github.com  |
+    +------------------+      |   File System    +-------->            |
+    | Windows 10       |      +------------------+        +------------+
+    +------------------+------>   Raspberry Pi   |
+                              +------------------+
+
+Strengths: Robust, easy to set up
+Weaknesses: You need to be able to connect to the Pi, either carry it around using a UTP cross-cable with bridged network, or carry around a switch or hub if you are using an open network. It just doesn't work in my office so my Pi sits at home accessable via port forwarding.
+
+
+## Alternatives
+
+I have also tried the following offerings:
+
+### Local MEAN stack
+
+    +----------------------------------+
+    |Visual Studio Code                |
+    +----------------------------------+
+    | Windows 10                       |
+    |                     +------+-----+
+    |                     | MEAN | git |
+    +---------------------+------+-----+
+    | File System                      |
+    +----------------------------------+
+
+Strengths: not so easy to set up
+Weaknesses: rebuilding takes a lot of time, test data on local db, need to run servers locally
+
+### Local Git repository
+
+                                            +--------+
+                              +-----+------+-v---+    |
+    +------------------+      | SMB | MEAN | git +----+
+    |Visual Studio Code|      +-----+------+-----+
+    +------------------+      |   File System    |
+    | Windows 10       |      +------------------+
+    +------------------+      |   Raspberry Pi   |
+                              +------------------+
+
+Strengths: private code
+Weaknesses: If I want to rebuild by Pi, I need additional backup steps
+
+### Virtual Pi
+
+I have tried to use QEMU for a virtual Pi however it is extremely slow because of the mem cap of 256MB of the kernel.
+
+    +----------------------------------+
+    |Visual Studio Code                |
+    +----------------------------------+
+    | Windows 10                       |
+    |             QEMU                 |
+    |             +-----+------+-----+ |
+    |             | SMB | MEAN | git | |
+    |             +-----+------+-----+ |
+    |             |   File System    | |
+    |             +------------------+ |
+    |             |   Raspberry Pi   | |
+    |             +------------------+ |
+    +----------------------------------+
+
+Strengths: Easy backup (7z the image file), easy distribution, no hardware required, portable, no messing around with connectivity issues
+Weaknesses: extremely slow
+
+### Cloud
+
+Not yet tried cloud, as my own hosting provider doesn't support node, only PHP. Maybe I'll switch to Heroku, AmazonWS, Google Cloud Platform... in near future. But still I need to have a dev/test environment. These offerings cost money...
+
+Graphics created via [asciiflow.com](http://asciiflow.com/) 
 
 # Table of Contents
 0. [Setup](#setup)
@@ -67,11 +124,15 @@ RISC architectures, in contrast, have a smaller number of more general purpose i
 The core difference between those in this aspect is that ARM instructions operate only on registers with a few instructions for loading and saving data from / to memory while x86 can operate on directly memory as well. Up until v8 ARM was a native 32 bit architecture, favoring four byte operations over others.
 So ARM is a simpler architecture, leading to small silicon area and lots of power save features while x86 becoming a power beast in terms of both power consumption and production. [source](https://stackoverflow.com/questions/14794460/how-does-the-arm-architecture-differ-from-x86)
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+|  Type | A-1 | A-1+ | B 1 | B 1+ | B 2 | B 2 v 1.2 | B 3 | CM 1 | CM 3 | CM 3 Lite | Zero 1.2 | Zero 1.3 | Zero W |
+|  ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+|  Target Price ($) | 25 | 20 | 35 | 25 | 35 | 35 | 35 | 30 | 30 | 25 | 5 | 5 | 10 |
+|  Clockspeed (MHz) | 700 | 700 | 700 | 700 | 900 | 900 | 1200 | 700 | 1200 | 1200 | 1000 | 1000 | 1000 |
+|  Memory | 256 | 512 | 512 | 512 | 1024 | 1024 | 1024 | 512 | 1024 | 1024 | 512 | 512 | 512 |
+|  Power (W) | 1,5 | 1 | 3,5 | 1,75 | 4,1 | 4,1 | 6,7 | 1 | 3,5 | 3,5 | 1,75 | 1,75 | 1,75 |
+|  Weight (g) | 31 | 23 | 45 | 45 | 45 | 45 | 45 | 7 | 7 | 7 | 9 | 9 | 9 |
+
+Data table to markdown using [google sheet plugin](https://chrome.google.com/webstore/detail/markdowntablemaker/cofkbgfmijanlcdooemafafokhhaeold?hl=en).
 
 # OPERATING SYSTEM
 
