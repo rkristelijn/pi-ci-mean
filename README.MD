@@ -26,6 +26,25 @@ This project's goal: Create a platform to minimize cost and powerusage and maxim
 
 Back to [Table of Contents](#table-of-contents)
 
+Via the web:
+
+                            U:\    +---------------+
+        +-------------------+  +----> sFTP netdrive +-----------+      proxy.conf
+        | Visual Studio Code|  |    +---------------+           |      +-----+
+        |                   +--+   +------------+   4200        |      |     |
+        +-------------------+      |    Putty   +--------+-----------------------+
+        | Windows 10        +------> ssh tunnel |        |      |      |     |   |
+        |                   |      +------------+     +--v------+--+---v-----+---v-+
+        +-------------------+                         | ssh  |sFTP | Node |webpack |
+                                                    +------------+---------------+         +------------+
+                                                    |          File System       +--------->Github.com  |
+                                                    +----------------------------+         |            |
+                                                    |         Raspberry pi       |         +------------+
+                                                    |                            |
+                                                    |                            |
+                                                    +----------------------------+
+Via LAN:
+
                               +-----+------+-----+
     +------------------+      | SMB | MEAN | git |        +------------+
     |Visual Studio Code|      +-----+------+-----+        |Github.com  |
