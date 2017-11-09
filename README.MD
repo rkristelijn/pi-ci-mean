@@ -331,6 +331,8 @@ open `mongo` (MongDB client)
 
 ## Node
 
+Back to [Table of Contents](#table-of-contents)
+
 If we just install node via apt-get we get an old version.
 
     pi@1337-pi:~ $ apt list nodejs
@@ -362,6 +364,8 @@ Install node:
 
 ## Angular
 
+Back to [Table of Contents](#table-of-contents)
+
 Now because we have npm, we can easily install Angular 4 or greater using:
 
 `sudo npm i -g @angular/cli@latest`
@@ -384,6 +388,8 @@ Well, that's it. You can now use ng (angular/cli) to create your front-end proje
 Note that I first used ng new to create an application and then copied server.js and the api/ folder into the same application, merging the package.json file.
 
 # Building
+
+Back to [Table of Contents](#table-of-contents)
 
 In case you havn't already, get the code for a lean-mean app:
 
@@ -420,6 +426,8 @@ This uses the `package.json` command start that in turn contains the following c
 The above commands don't return a console, so you need to open new putty sessions. If you are ok with that, seeing the live update in the putty screens, you are done. If not, please read the Serving chapter.
 
 # Serving
+
+Back to [Table of Contents](#table-of-contents)
 
 Running node and angular in development mode is tricky. Since I don't want to have multiple ssh session open, I use `forever` to push the processes to the background.
 
@@ -469,6 +477,8 @@ Viewing logfiles:
 Note that you can select the logfile name using the mouse in putty, type cat, use right-mouse button to paste or shift-insert
 
 # QEMU
+
+Back to [Table of Contents](#table-of-contents)
 
 [QEMU](https://www.qemu.org/) is a generic and open source machine emulator and virtualizer.
 
@@ -555,6 +565,7 @@ After reboot
     /dev/sda2      137216 20971519 20834304   10G  83  Linux
 
 ## Expand swap file
+
 As you start using the emulator, you might observe that it is slow (especially if you have an old CPU). One reason for that is that the memory is only 256MB and the swap file is only 100MB. Unfortunately, there is no way to increase memory, but there is a way to increase the swap file. [source](https://www.bitpi.co/2015/02/11/how-to-change-raspberry-pis-swapfile-size-on-rasbian/)
 
 First you need to open the file /etc/dphys-swapfile using your favorite editor, e.g.
