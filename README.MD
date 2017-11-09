@@ -133,7 +133,7 @@ Back to [Table of Contents](#table-of-contents)
 * Network: wired
 * Mode: headless (no monitor, nor keyboard)
 * OS: Raspbian Jessy
-* Features: Latest MEAN (MongoDB, Express, Angular 4+, Node 8+), Samba, Git (todo: git hook + auto test + auto deploy)
+* Features: Latest MEAN (MongoDB, Express, Angular 4+, Node 8+), Samba, Git
 
 # HARDWARE
 
@@ -253,9 +253,11 @@ Configure your git instance:
 
 Todo: have git or ssh [remember my password](https://stackoverflow.com/questions/21956750/secure-push-and-pull-with-no-password-git)
 
-Clone a git repo:
+From the /home/pi directory (cd ~) clone a git repo:
 
-`git clone https://somerepo`
+`git clone https://github.com/rkristelijn/lean-mean.git`
+
+This repo is a simple full stack MongoDB-Express-Angular-Node (MEAN) application.
 
 For a full overview of git commands see the [Cheat sheet](https://github.com/github/training-kit/blob/master/downloads/github-git-cheat-sheet.md)
 
@@ -378,9 +380,92 @@ Note; i had to restart the installation as it was locked trying to update .node-
 
 Well, that's it. You can now use ng (angular/cli) to create your front-end project, use yo (Yeoman: `sudo npm install -g yo`) to create your Node app or look at my project for smallest mean app.
 
+Note that I first used ng new to create an application and then copied server.js and the api/ folder into the same application, merging the package.json file.
+
+# Building
+
+In case you havn't already, get the code for a lean-mean app:
+
+From the /home/pi directory (cd ~) clone a git repo:
+
+`git clone https://github.com/rkristelijn/lean-mean.git`
+
+Now we have just the code, there are many libraries and dependancies to get. They are all in package.json. To install them, use 
+
+`npm install`
+
+This will take a while and a folder `node_modules` is created.
+
+After that you can start the back-end using:
+
+`nodemon server.js`
+
+* nodemon monitors file changes and rebuilds/restarts automatically on save.
+* if you don't have nodemon installed use `npm i nodemon -g`
+
+And you can start the front-end using:
+
+`npm start`
+
+This uses the `package.json` command start that in turn contains the following command:
+
+`ng serve --proxy-config proxy.conf.json --host 0.0.0.0 --disable-host-check`
+
+* ng serve monitos file changes and rebuilds/restarts automatically on save.
+* because the browser won't allow HTTP calls from differents hosts or ports, we use webpack to proxy the API calls to 3000 via port 4200.
+* To enable webpack to serve the network outside of localhost, we need to add `--host 0.0.0.0` and disable the host check
+* building the code for the first time takes a while (~30 sec), but the incremental transpile is pretty fast 
+
+The above commands don't return a console, so you need to open new putty sessions. If you are ok with that, seeing the live update in the putty screens, you are done. If not, please read the Serving chapter.
+
 # Serving
 
-Running node and angular in development mode is not easy. There are various
+Running node and angular in development mode is tricky. Since I don't want to have multiple ssh session open, I use `forever` to push the processes to the background.
+
+First we need to install forever
+
+`npm i forever -g`
+
+After that we can make sure no processes are running that will block the execution:
+
+`sudo netstat -lptn`
+
+* You need sudo for the p-flag
+
+    Active Internet connections (only servers)
+    Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+    tcp        0      0 0.0.0.0:4200            0.0.0.0:*               LISTEN      17407/@angular/cli
+    tcp        0      0 127.0.0.1:27017         0.0.0.0:*               LISTEN      362/mongod
+    tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      546/smbd
+    tcp        0      0 127.0.0.1:28017         0.0.0.0:*               LISTEN      362/mongod
+    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      532/sshd
+    tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      546/smbd
+    tcp6       0      0 :::139                  :::*                    LISTEN      546/smbd
+    tcp6       0      0 :::22                   :::*                    LISTEN      532/sshd
+    tcp6       0      0 :::3000                 :::*                    LISTEN      17447/node
+    tcp6       0      0 :::445                  :::*                    LISTEN      546/smbd
+
+You can kill node and angular/cli using `kill 17407` and `kill 17447` (the PID on your session probably is different)
+
+then you can use forever to start:
+
+`forever start -c "npm start" ./`
+
+`forever start -c "nodemon server.js" ./`
+
+Use `forever list` to see what's going on:
+
+    pi@1337-pi:~/lean-mean $ forever list
+    info:    Forever processes running
+    data:        uid  command           script forever pid   id logfile                    uptime
+    data:    [0] umj0 npm start                17390   17396    /home/pi/.forever/umj0.log 0:0:0:22.447
+    data:    [1] lYMD nodemon server.js        17428   17434    /home/pi/.forever/lYMD.log 0:0:0:4.491
+
+Viewing logfiles:
+
+`cat /home/pi/.forever/umj0.log`
+
+Note that you can select the logfile name using the mouse in putty, type cat, use right-mouse button to paste or shift-insert
 
 # QEMU
 
