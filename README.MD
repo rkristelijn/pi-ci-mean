@@ -9,9 +9,10 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 4. [MongoDB](#mongodb)
 5. [Node](#node)
 6. [Angular](#angular)
-7. [Serving](#serving)
-8. [QEMU](#qemu)
-9. [Cheat Sheets](#cheat-sheets)
+7. [Building](#building)
+8. [Serving](#serving)
+9. [QEMU](#qemu)
+10. [Cheat Sheets](#cheat-sheets)
 
 # APPROACH VECTOR
 
@@ -432,18 +433,18 @@ After that we can make sure no processes are running that will block the executi
 
 * You need sudo for the p-flag
 
-    Active Internet connections (only servers)
-    Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-    tcp        0      0 0.0.0.0:4200            0.0.0.0:*               LISTEN      17407/@angular/cli
-    tcp        0      0 127.0.0.1:27017         0.0.0.0:*               LISTEN      362/mongod
-    tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      546/smbd
-    tcp        0      0 127.0.0.1:28017         0.0.0.0:*               LISTEN      362/mongod
-    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      532/sshd
-    tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      546/smbd
-    tcp6       0      0 :::139                  :::*                    LISTEN      546/smbd
-    tcp6       0      0 :::22                   :::*                    LISTEN      532/sshd
-    tcp6       0      0 :::3000                 :::*                    LISTEN      17447/node
-    tcp6       0      0 :::445                  :::*                    LISTEN      546/smbd
+        Active Internet connections (only servers)
+        Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+        tcp        0      0 0.0.0.0:4200            0.0.0.0:*               LISTEN      17407/@angular/cli
+        tcp        0      0 127.0.0.1:27017         0.0.0.0:*               LISTEN      362/mongod
+        tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      546/smbd
+        tcp        0      0 127.0.0.1:28017         0.0.0.0:*               LISTEN      362/mongod
+        tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      532/sshd
+        tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      546/smbd
+        tcp6       0      0 :::139                  :::*                    LISTEN      546/smbd
+        tcp6       0      0 :::22                   :::*                    LISTEN      532/sshd
+        tcp6       0      0 :::3000                 :::*                    LISTEN      17447/node
+        tcp6       0      0 :::445                  :::*                    LISTEN      546/smbd
 
 You can kill node and angular/cli using `kill 17407` and `kill 17447` (the PID on your session probably is different)
 
@@ -455,11 +456,11 @@ then you can use forever to start:
 
 Use `forever list` to see what's going on:
 
-    pi@1337-pi:~/lean-mean $ forever list
-    info:    Forever processes running
-    data:        uid  command           script forever pid   id logfile                    uptime
-    data:    [0] umj0 npm start                17390   17396    /home/pi/.forever/umj0.log 0:0:0:22.447
-    data:    [1] lYMD nodemon server.js        17428   17434    /home/pi/.forever/lYMD.log 0:0:0:4.491
+        pi@1337-pi:~/lean-mean $ forever list
+        info:    Forever processes running
+        data:        uid  command           script forever pid   id logfile                    uptime
+        data:    [0] umj0 npm start                17390   17396    /home/pi/.forever/umj0.log 0:0:0:22.447
+        data:    [1] lYMD nodemon server.js        17428   17434    /home/pi/.forever/lYMD.log 0:0:0:4.491
 
 Viewing logfiles:
 
