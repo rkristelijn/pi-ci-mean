@@ -9,8 +9,9 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 4. [MongoDB](#mongodb)
 5. [Node](#node)
 6. [Angular](#angular)
-7. [QEMU](#qemu)
-6. [Cheat Sheets](#cheat-sheets)
+7. [Serving](#serving)
+8. [QEMU](#qemu)
+9. [Cheat Sheets](#cheat-sheets)
 
 # APPROACH VECTOR
 
@@ -377,7 +378,12 @@ Note; i had to restart the installation as it was locked trying to update .node-
 
 Well, that's it. You can now use ng (angular/cli) to create your front-end project, use yo (Yeoman: `sudo npm install -g yo`) to create your Node app or look at my project for smallest mean app.
 
+# Serving
+
+Running node and angular in development mode is not easy. There are various
+
 # QEMU
+
 [QEMU](https://www.qemu.org/) is a generic and open source machine emulator and virtualizer.
 
 Before you dive into the details of emulating an RPi please be informed that the memory limit is 256MB (seems hardcoded in the kernel), it runs more than 14-130 times slower than an RPi 3, needs additional steps to grow the image but is definitely more portable and easier to back-up and share. 
