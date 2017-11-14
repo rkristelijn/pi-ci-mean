@@ -212,7 +212,7 @@ Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift
 
 **In short**:
 
-Todo: Update Jessie (8) to Stretch (9). Debian name their releases after [Pixar](https://www.debian.org/doc/manuals/project-history/ch-releases.en.html) characters.
+Todo: [Update Jessie (8) to Stretch (9)](https://github.com/rkristelijn/pi-ci-mean/issues/1). Debian name their releases after [Pixar](https://www.debian.org/doc/manuals/project-history/ch-releases.en.html) characters.
 
 1. Start in NOOBS by holding `SHIFT`
 2. Choose Raspbian Lite
@@ -292,7 +292,7 @@ Configure your git instance:
   `git config --global user.email "you@example.com"`
   `git config --global user.name "Your Name"`
 
-Todo: have git or ssh [remember my password](https://stackoverflow.com/questions/21956750/secure-push-and-pull-with-no-password-git)
+Todo: [have git or ssh](https://github.com/rkristelijn/pi-ci-mean/issues/2) [remember my password](https://stackoverflow.com/questions/21956750/secure-push-and-pull-with-no-password-git)
 
 From the /home/pi directory (cd ~) clone a git repo:
 
@@ -410,7 +410,7 @@ Install node:
 
 ## Angular
 
-Todo: update Angular 4 to 5
+Todo: [update Angular 4 to 5](https://github.com/rkristelijn/pi-ci-mean/issues/3)
 
 Back to [Table of Contents](#table-of-contents)
 
@@ -843,7 +843,7 @@ A comparisson table:
 
 # x86 ISO
 
-Todo: explore x68 ISO image
+Todo: [explore x68 ISO image](https://github.com/rkristelijn/pi-ci-mean/issues/4)
 
 Also it is possible to run a raspberry pi from a NAS using an [x86 ISO](http://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2017-06-23/). 
 
