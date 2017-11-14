@@ -476,6 +476,26 @@ Viewing logfiles:
 
 Note that you can select the logfile name using the mouse in putty, type cat, use right-mouse button to paste or shift-insert
 
+# Exposing
+
+If you want to develop from anywhere using only putty, you need to do the following;
+
+Get noide: `git clone https://github.com/rkristelijn/noide.git`
+
+Start noide from ~/lean-mean using: `forever start -c "sudo node ../noide/index.js" ./`
+
+Now go to putty [Connection/SSH/Tunnels] and add:
+
+| Source port        | Destination                                      | result in Forwarded ports     |
+|----------------------------|------------------------------------------|---------------------------------------------------------------------|
+| 3000  | 1337-pi.local:3000     | L3000  1337-pi.local:3000 (for the node REST-API) |
+| 4200  | 1337-pi.local:4200     | L4200  1337-pi.local:4200 (for angular/cli) |
+| 5900  | 1337-desktop.local:5900     | L5900  1337-desktop.local:5900 (for tightvnc) |
+| 8080  | 1337-pi.local:80     | L8080  1337-pi.local:80 (for noide) |
+| 8081  | 192.168.0.1:80     | L8081  192.168.0.1:80 (for configuring my router) |
+
+note, if you want to keep these settings, you need to go back to [Session] and hit the `save` button in putty
+
 # QEMU
 
 Back to [Table of Contents](#table-of-contents)
