@@ -12,8 +12,9 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 7. [Building](#building)
 8. [Serving](#serving)
 9. [Exposing](#exposing)
-9. [QEMU](#qemu)
-10. [Cheat Sheets](#cheat-sheets)
+10. [QEMU](#qemu)
+11. [x68 ISO](#x68-iso)
+12. [Cheat Sheets](#cheat-sheets)
 
 # APPROACH VECTOR
 
@@ -23,7 +24,7 @@ My personal goals:
 * Prove small and medium companies can benefit from smart solutions with the same functionalties as a full blown ERP or CRM (like Oracle, Microsoft, Salesforce, Workday, SAP etc)
 * Redefine the current solution stack: VMWare images (virtualization) running Windows, that run Java (virtualization) that run packaged applications that need to interconnect with different packaged applications via middleware using webservices to create composit applications (virtualization)... Why not one solution for all processes?
 
-This project's goal: Create a platform to minimize cost and powerusage and maximize flexibility, performance and usability.
+This project's goal: Create a platform to minimize cost and powerusage and maximize flexibility, performance and usability for a full Javascript boilerplate (MongoDB,Express,Angular,Node)
 
 ## The project's offering:
 
@@ -409,6 +410,8 @@ Install node:
 
 ## Angular
 
+Todo: update Angular 4 to 5
+
 Back to [Table of Contents](#table-of-contents)
 
 What is `AngularJS`? > AngularJS (commonly referred to as "Angular.js" or "AngularJS 1.X") is a JavaScript-based open-source front-end web application framework mainly maintained by Google and by a community of individuals and corporations to address many of the challenges encountered in developing single-page applications. The JavaScript components complement Apache Cordova, the framework used for developing cross-platform mobile apps. It aims to simplify both the development and the testing of such applications by providing a framework for client-side model–view–controller (MVC) and model–view–viewmodel (MVVM) architectures, along with components commonly used in rich Internet applications. In 2014, the original AngularJS team began working on Angular (Application Platform). [source](https://en.wikipedia.org/wiki/AngularJS)
@@ -593,7 +596,7 @@ You are not done yet, you need to to a *lot* of chores.
 
 This image isn't capable of running MongoDB, so you need to enlarge the image:
 
-Using qemu-img resize first from dosbox or batchfile on windows machine
+Using `qemu-img resize` first from dosbox or batchfile on windows machine
 
     $ qemu-img resize 2016-05-27-raspbian-jessie-lite.img 10G
     WARNING: Image format was not specified for '2016-05-27-raspbian-jessie-lite.img' and probing guessed raw.
@@ -837,6 +840,10 @@ A comparisson table:
 |  THREADS max (ms) | 2685000 | 452529000 | 169 |
 |  MEMORY total time (s) | 274110 | 46795210 | 171 |
 |  MEMORY max (ms) | 771000 | 718210000 | 932 |
+
+# x86 ISO
+
+Todo: explore x68 ISO image
 
 Also it is possible to run a raspberry pi from a NAS using an [x86 ISO](http://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2017-06-23/). 
 
