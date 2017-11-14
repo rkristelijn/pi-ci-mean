@@ -886,7 +886,7 @@ A comparisson table:
 |  THREADS min (ms) | 4.61 |1.79 | 
 |  THREADS avg (ms) | 4.77 | 13.48 | 
 |  THREADS max (ms) | 24.01 | 159.39 |
-|  MEMORY total time (s) | 274110 | 5.2598 |
+|  MEMORY total time (s) | 2.4931 | 5.2598 |
 |  MEMORY min (ms) | 0.00 | 0.00 | 
 |  MEMORY avg (ms) | 0.00 | 0.01 | 
 |  MEMORY max (ms) | 8.06 | 20.14 | 
