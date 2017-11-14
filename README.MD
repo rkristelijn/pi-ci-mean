@@ -13,7 +13,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 8. [Serving](#serving)
 9. [Exposing](#exposing)
 10. [QEMU](#qemu)
-11. [x68 ISO](#x68-iso)
+11. [x86 ISO](#x86-iso)
 12. [Cheat Sheets](#cheat-sheets)
 
 # APPROACH VECTOR
