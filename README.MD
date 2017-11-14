@@ -11,6 +11,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 6. [Angular](#angular)
 7. [Building](#building)
 8. [Serving](#serving)
+9. [Exposing](#exposing)
 9. [QEMU](#qemu)
 10. [Cheat Sheets](#cheat-sheets)
 
@@ -19,7 +20,7 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 My personal goals: 
 
 * Improve on my full-stack javascript skills by practise
-* Prove small and medium companies can benefit from smart solutions with the same functionalties as a full blown ERP or CRM (like Oracle, Microsoft,Salesforce, Workday, SAP etc)
+* Prove small and medium companies can benefit from smart solutions with the same functionalties as a full blown ERP or CRM (like Oracle, Microsoft, Salesforce, Workday, SAP etc)
 * Redefine the current solution stack: VMWare images (virtualization) running Windows, that run Java (virtualization) that run packaged applications that need to interconnect with different packaged applications via middleware using webservices to create composit applications (virtualization)... Why not one solution for all processes?
 
 This project's goal: Create a platform to minimize cost and powerusage and maximize flexibility, performance and usability.
@@ -28,16 +29,16 @@ This project's goal: Create a platform to minimize cost and powerusage and maxim
 
 Back to [Table of Contents](#table-of-contents)
 
-Via the web:
+Via the web 1 (VSC):
 
-                            U:\    +---------------+
+                            U:\     +---------------+
         +-------------------+  +----> sFTP netdrive +-----------+      proxy.conf
         | Visual Studio Code|  |    +---------------+           |      +-----+
         |                   +--+   +------------+   4200        |      |     |
         +-------------------+      |    Putty   +--------+-----------------------+
         | Windows 10        +------> ssh tunnel |        |      |      |     |   |
-        |                   |      +------------+     +--v------+--+---v-----+---v-+
-        +-------------------+                         | ssh  |sFTP | Node |webpack |
+        |                   |      +------------+   +--v------+--+---v-----+---v-+
+        +-------------------+                       | ssh  |sFTP | Node |webpack |
                                                     +------------+---------------+         +------------+
                                                     |          File System       +--------->Github.com  |
                                                     +----------------------------+         |            |
@@ -45,6 +46,28 @@ Via the web:
                                                     |                            |
                                                     |                            |
                                                     +----------------------------+
+                                                    
+Via the web 2 (noide):
+
+    +---------------------+
+    |  noide in chrome    |
+    |                     |
+    |  front-end in chrome|                                          proxy.conf
+    |                     |                                          +-----+
+    |  back-end with postman     +------------+   4200               |     |
+    +---------------------+      |    Putty   +--------+-----------------------+
+    |   Windows 10        +------> ssh tunnel |        |             |     |   |
+    |                     |      +------------+   +----v-------------v-----+---v-+
+    +---------------------+                       |   ssh  |noide| Node |webpack |
+                                                  +------------------------------+       +------------+
+                                                  |          File System         +------->Github.com  |
+                                                  +------------------------------+       |            |
+                                                  |         Raspberry pi         |       +------------+
+                                                  |                              |
+                                                  |                              |
+                                                  +------------------------------+
+
+
 Via LAN:
 
                               +-----+------+-----+
