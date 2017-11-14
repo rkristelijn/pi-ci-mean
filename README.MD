@@ -201,9 +201,17 @@ Back to [Table of Contents](#table-of-contents)
 
 ## Install OS
 
+We are going to install Raspbian Lite.
+
+What is `Raspbian` > Raspbian is a free operating system based on Debian optimized for the Raspberry Pi hardware. An operating system is the set of basic programs and utilities that make your Raspberry Pi run. [source](http://www.raspbian.org/)
+
+What is `Debian` > An operating system is the set of basic programs and utilities that make your computer run. At the core of an operating system is the kernel. The kernel is the most fundamental program on the computer and does all the basic housekeeping and lets you start other programs. Debian systems currently use the Linux kernel or the FreeBSD kernel. Linux is a piece of software started by Linus Torvalds and supported by thousands of programmers worldwide. FreeBSD is an operating system including a kernel and other software. [source](https://www.debian.org/intro/about#what)
+
 Connect HDMI/keyboard/mouse, type `sudo reboot` or start the Pi, then hold shift to start in NOOBS. My current version is v1.9 (Mar 18 2016) and I know there's a new NOOBS version, but I only need to install Raspbian Lite (A port of Debian jessie for the Raspberry Pi (minimal version), so no overhead of GUI. After all... I'm not a *User* that needs a graphical interface. I just want to run the server as slim as possible so all resources go to the server.
 
 **In short**:
+
+Todo: Update Jessie (8) to Stretch (9). Debian name their releases after [Pixar](https://www.debian.org/doc/manuals/project-history/ch-releases.en.html) characters.
 
 1. Start in NOOBS by holding `SHIFT`
 2. Choose Raspbian Lite
@@ -251,6 +259,12 @@ Back to [Table of Contents](#table-of-contents)
 
 Full howto [here](https://raspberrypihq.com/how-to-share-a-folder-with-a-windows-computer-from-a-raspberry-pi/)
 
+What is `SMB`? > The Server Message Block (SMB) protocol is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs in a computer network. The SMB protocol can be used on top of its TCP/IP protocol or other network protocols. Using the SMB protocol, an application (or the user of an application) can access files or other resources at a remote server. This allows applications to read, create, and update files on the remote server. It can also communicate with any server program that is set up to receive an SMB client request. Windows Server 2012 introduces the new 3.0 version of the SMB protocol.[source](https://technet.microsoft.com/en-us/library/hh831795(v=ws.11).aspx)
+
+What is `apt-get`? > APT (the Advanced Packaging Tool) is an evolution of the Debian .deb software packaging system. It is a rapid, practical, and efficient way to install packages on your system. Dependencies are managed automatically, configuration files are maintained, and upgrades and downgrades are handled carefully to ensure system stability. [source](https://www.computerhope.com/unix/apt-get.htm)
+
+What is `sudo`? > sudo ("superuser do") allows a user with proper permissions to execute a command as another user, such as the superuser. [source](https://www.computerhope.com/unix/sudo.htm)
+
 **In Short**:
 
 1. `sudo apt-get install samba samba-common-bin`
@@ -266,7 +280,9 @@ On your Windows machine:
 
 ## Install Git
 
-We need git for various things.
+What is `git`? > Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. It is primarily used for source code management in software development,[8] but it can be used to keep track of changes in any set of files. As a distributed revision control system it is aimed at speed,[9] data integrity, and support for distributed, non-linear workflows. Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development. Its current maintainer since 2005 is Junio Hamano. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version tracking abilities, independent of network access or a central server. [source](https://en.wikipedia.org/wiki/Git)
+
+We need git for various things: keep track of our code changes, get code bases from the internet and share code to others.
 
 `sudo apt-get install git`
 
@@ -307,6 +323,10 @@ Back to [Table of Contents](#table-of-contents)
 Since, next to the OS, MongoDB, Node and Angular/cli are easiliy installed, only the DB is a candidate to be backed up. This is out of scope for this tutorial.
 
 # MEAN
+
+What is `MEAN`? > The term MEAN stack refers to a collection of JavaScript based technologies used to develop web applications. MEAN is an acronym for MongoDB, ExpressJS, AngularJS and Node.js. From client to server to database, MEAN is full stack JavaScript. [source](https://www.sitepoint.com/introduction-mean-stack/)
+
+What is `Express`? > Express is lightweight framework used to build web applications in Node. It provides a number of robust features for building single and multi page web application. Express is inspired by the popular Ruby framework, Sinatra.
 
 Back to [Table of Contents](#table-of-contents)
 
@@ -356,6 +376,8 @@ open `mongo` (MongDB client)
 
 Back to [Table of Contents](#table-of-contents)
 
+What is `Node`? > Node.js is a server side JavaScript execution environment. It’s a platform built on Google Chrome’s V8 JavaScript runtime. It helps in building highly scalable and concurrent applications rapidly.
+
 If we just install node via apt-get we get an old version.
 
     pi@1337-pi:~ $ apt list nodejs
@@ -388,6 +410,15 @@ Install node:
 ## Angular
 
 Back to [Table of Contents](#table-of-contents)
+
+What is `AngularJS`? > AngularJS (commonly referred to as "Angular.js" or "AngularJS 1.X") is a JavaScript-based open-source front-end web application framework mainly maintained by Google and by a community of individuals and corporations to address many of the challenges encountered in developing single-page applications. The JavaScript components complement Apache Cordova, the framework used for developing cross-platform mobile apps. It aims to simplify both the development and the testing of such applications by providing a framework for client-side model–view–controller (MVC) and model–view–viewmodel (MVVM) architectures, along with components commonly used in rich Internet applications. In 2014, the original AngularJS team began working on Angular (Application Platform). [source](https://en.wikipedia.org/wiki/AngularJS)
+
+What is `Angular`? > Angular (commonly referred to as "Angular 2+" or "Angular 2") is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google and by a community of individuals and corporations to address all of the parts of the developer's workflow while building complex web applications. Angular is a complete rewrite from the same team that built AngularJS. Angular is a framework for building client applications in HTML and either JavaScript or a language like TypeScript that compiles to JavaScript. Angular combines declarative templates, dependency injection, end to end tooling, and integrated best practices to solve development challenges. Angular empowers developers to build applications that live on the web, mobile, or the desktop. [source](https://en.wikipedia.org/wiki/Angular_(application_platform))
+
+Version | Released | Changelog |
+--------|----------|----------|
+Angular 1 | | Originally, the rewrite of AngularJS was called "Angular 2" by the team, but this led to confusion among developers. To clarify, the team announced that separate terms should be used for each framework with "AngularJS" referring to the 1.X versions and "Angular" without the "JS" referring to versions 2 and up.|
+Angular 2 | April 30, 2015 | Angular 2.0 was announced at the ng-Europe conference 22-23. September 2014.[5] The drastic changes in the 2.0 version created considerable controversy among developers.[6] On April 30, 2015, the Angular developers announced that Angular 2 moved from Alpha to Developer Preview.[7] Angular 2 moved to Beta in December 2015,[8] and the first release candidate was published in May 2016.[9] The final version was released on September 14, 2016.|
 
 Now because we have npm, we can easily install Angular 4 or greater using:
 
