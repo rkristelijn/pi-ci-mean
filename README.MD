@@ -418,9 +418,16 @@ What is `Angular`? > Angular (commonly referred to as "Angular 2+" or "Angular 2
 Version | Released | Changelog |
 --------|----------|----------|
 Angular 1 | | Originally, the rewrite of AngularJS was called "Angular 2" by the team, but this led to confusion among developers. To clarify, the team announced that separate terms should be used for each framework with "AngularJS" referring to the 1.X versions and "Angular" without the "JS" referring to versions 2 and up.|
-Angular 2 | April 30, 2015 | Angular 2.0 was announced at the ng-Europe conference 22-23. September 2014.[5] The drastic changes in the 2.0 version created considerable controversy among developers.[6] On April 30, 2015, the Angular developers announced that Angular 2 moved from Alpha to Developer Preview.[7] Angular 2 moved to Beta in December 2015,[8] and the first release candidate was published in May 2016.[9] The final version was released on September 14, 2016.|
+Angular 2 | April 30, 2015 | Angular 2.0 was announced at the ng-Europe conference 22-23. September 2014. The drastic changes in the 2.0 version created considerable controversy among developers. On April 30, 2015, the Angular developers announced that Angular 2 moved from Alpha to Developer Preview. Angular 2 moved to Beta in December 2015, and the first release candidate was published in May 2016. The final version was released on September 14, 2016.|
+Angular 3 | skipped | |
+Angular 4 | December 13, 2016 | On 13 December 2016 Angular 4 was announced, skipping 3 to avoid a confusion due to the misalignment of the router package's version which was already distributed as v3.3.0. The final version was released on March 23, 2017. Angular 4 is backward compatible with Angular 2 |
+Angular 5 | November 1, 2017 | Angular 5 was released on November 1, 2017. Key improvements in Angular 5 include support for progressive Web apps, a build optimizer and improvements related to Material Design. Angular 6 release will be pushed back to March or April 2018, with Angular 7 showing up in September or October 2018. Each version is expected to be backward-compatible with the prior release. Google pledged to do twice-a-year upgrades. |
 
 Now because we have npm, we can easily install Angular 4 or greater using:
+
+What is `NPM`? > NPM is a package manager for Node.js packages, or modules if you like. www.npmjs.com hosts thousands of free packages to download and use. The NPM program is installed on your computer when you install Node.js. [see](https://www.npmjs.com/)
+
+What is `angular/cli`? > Angular/cli used to be called angular-cli. So don't install angular-cli, but @angular/cli. When creating angular applications manualy, you need to do a lot of command-line work, creating files and config-files and let them all work together. With angular/cli you can do this with one command. The big advantage of this is, that the folder structure and filenames are standardized so everyone works with the same structure. That makes life easier.
 
 `sudo npm i -g @angular/cli@latest`
 
@@ -437,9 +444,9 @@ Now because we have npm, we can easily install Angular 4 or greater using:
 
 Note; i had to restart the installation as it was locked trying to update .node-gyp
 
-Well, that's it. You can now use ng (angular/cli) to create your front-end project, use yo (Yeoman: `sudo npm install -g yo`) to create your Node app or look at my project for smallest mean app.
+Well, that's it. You can now use ng (angular/cli) to create your front-end project (`ng new`), use yo (Yeoman: `sudo npm install -g yo`) to create your Node app or look at my project for smallest mean app.
 
-Note that I first used ng new to create an application and then copied server.js and the api/ folder into the same application, merging the package.json file.
+Note that I first used ng new to create an application and then copied server.js and the api/ folder into the same application, merging the package.json file. You can find my simple project on github. The instructions are in the next chapter.
 
 # Building
 
@@ -472,12 +479,12 @@ This uses the `package.json` command start that in turn contains the following c
 
 `ng serve --proxy-config proxy.conf.json --host 0.0.0.0 --disable-host-check`
 
-* ng serve monitos file changes and rebuilds/restarts automatically on save.
+* ng serve monitors file changes and rebuilds/restarts automatically on save.
 * because the browser won't allow HTTP calls from differents hosts or ports, we use webpack to proxy the API calls to 3000 via port 4200.
 * To enable webpack to serve the network outside of localhost, we need to add `--host 0.0.0.0` and disable the host check
 * building the code for the first time takes a while (~30 sec), but the incremental transpile is pretty fast 
 
-The above commands don't return a console, so you need to open new putty sessions. If you are ok with that, seeing the live update in the putty screens, you are done. If not, please read the Serving chapter.
+The above commands don't return a console, so you need to open new putty sessions. If you are ok with that, seeing the live update in the putty screens, you are done. If not, please read the Serving chapter. After the Serving chapter noide is discussed. If you don't want to serve `node` and `angular` from `forever` you can go directly to the `noide` part. From `noide` you can serve both the REST API back-end and the front-end.
 
 # Serving
 
@@ -532,12 +539,6 @@ Note that you can select the logfile name using the mouse in putty, type cat, us
 
 # Exposing
 
-If you want to develop from anywhere using only putty, you need to do the following;
-
-Get noide: `git clone https://github.com/rkristelijn/noide.git`
-
-Start noide from ~/lean-mean using: `forever start -c "sudo node ../noide/index.js" ./`
-
 Now go to putty [Connection/SSH/Tunnels] and add:
 
 | Source port        | Destination                                      | result in Forwarded ports     |
@@ -549,6 +550,24 @@ Now go to putty [Connection/SSH/Tunnels] and add:
 | 8081  | 192.168.0.1:80     | L8081  192.168.0.1:80 (for configuring my router) |
 
 note, if you want to keep these settings, you need to go back to [Session] and hit the `save` button in putty
+
+# NOIDE
+
+What is `noide`? > No IDE is an IDE written in Node that access (read, write, create, delete, rename) your files from a browser. Next to that you can execute shell commands, such as starting the back-end, front-end, running tests, linting etc. So you need only putty with some setting and you are good to go.
+
+What is `IDE`? > IDE - Integrated Development Environment, that has code highlighting, autocompletion, code checks, and integration with source code controle.
+
+First we need to install forever if you havn't already.
+
+`npm i forever -g`
+
+If you want to develop from anywhere using only putty, you need to do the following;
+
+Get noide: `git clone https://github.com/rkristelijn/noide.git`
+
+Start noide from `~/lean-mean` using: `forever start -c "sudo node ../noide/index.js" ./`
+
+Note that you can also install the original noide from [here](http://davidjamesstone.github.io/noide/) however I created a fork because .ts files are not highlighted properly. Next to that the editor was updated from 1.2.3 to 1.2.9. 
 
 # QEMU
 
@@ -806,10 +825,10 @@ So what do we got now? Let's test it using a [benchmark tool](https://github.com
 
 A comparisson table:
 
-|   | Baremetal RPi3 | QEMU | Times slower |
+|   | Baremetal RPi3 | QEMU | QEMU Slower factor |
 |  ------ | ------ | ------ | ------ |
 |  CPU total time (s) | 1748440 | 25339030 | 14 |
-|  CPU min (ms) | 686000 | 5808000 | 8 |
+|  CPU min (ms) | 686000 | 5808000 | 8 | 
 |  CPU avg (ms) | 699000 | 10114000 | 14 |
 |  CPU max (ms) | 1701000 | 17067000 | 10 |
 |  THREADS total time (s) | 1187900 | 155402570 | 131 |
@@ -818,6 +837,59 @@ A comparisson table:
 |  THREADS max (ms) | 2685000 | 452529000 | 169 |
 |  MEMORY total time (s) | 274110 | 46795210 | 171 |
 |  MEMORY max (ms) | 771000 | 718210000 | 932 |
+
+Also it is possible to run a raspberry pi from a NAS using an [x86 ISO](http://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2017-06-23/). 
+
+    Raspberry Pi Benchmark Test
+    Author: AikonCWD
+    Version: 3.0
+
+    Running CPU test...
+    total time: 10.5138s
+    min: 0.93ms
+    avg: 4.20ms
+    max: 182.78ms
+
+    Running THREADS test...
+    total time: 33.7064s
+    min: 1.79ms
+    avg: 13.48ms
+    max: 159.39ms
+
+    Running MEMORY test...
+    Operations performed: 3145728 (598066.15 ops/sec)
+    3072.00 MB transferred (584.05 MB/sec)
+    total time: 5.2598s
+    min: 0.00ms
+    avg: 0.01ms
+    max: 20.14ms
+
+    Running HDPARM test...
+
+    Running DD WRITE test...
+    536870912 bytes (537 MB) copied, 5.36062 s, 100 MB/s
+
+    Running DD READ test...
+    536870912 bytes (537 MB) copied, 3.23972 s, 166 MB/s
+
+    AikonCWD's rpi-benchmark completed!
+
+A comparisson table:
+
+|   | Baremetal RPi3 | x86 ISO VM |
+|  ------ | ------ | ------ | 
+|  CPU total time (s) |  17.4972 | 10.5138 | 
+|  CPU min (ms) | 6.96 | 0.93 | 
+|  CPU avg (ms) | 6.99 | 4.20 | 
+|  CPU max (ms) |  25.9 | 182.78 | 
+|  THREADS total time (s) | 11.9219 | 33.7064 | 
+|  THREADS min (ms) | 4.61 |1.79 | 
+|  THREADS avg (ms) | 4.77 | 13.48 | 
+|  THREADS max (ms) | 24.01 | 159.39 |
+|  MEMORY total time (s) | 274110 | 5.2598 |
+|  MEMORY min (ms) | 0.00 | 0.00 | 
+|  MEMORY avg (ms) | 0.00 | 0.01 | 
+|  MEMORY max (ms) | 8.06 | 20.14 | 
 
 Back to [Table of Contents](#table-of-contents)
 
