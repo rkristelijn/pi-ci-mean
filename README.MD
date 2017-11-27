@@ -12,9 +12,10 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 7. [Building](#building)
 8. [Serving](#serving)
 9. [Exposing](#exposing)
-10. [QEMU](#qemu)
-11. [x86 ISO](#x86-iso)
-12. [Cheat Sheets](#cheat-sheets)
+10. [NoIDE](#noide)
+11. [QEMU](#qemu)
+12. [x86 ISO](#x86-iso)
+13. [Cheat Sheets](#cheat-sheets)
 
 # APPROACH VECTOR
 
@@ -25,6 +26,19 @@ My personal goals:
 * Redefine the current solution stack: VMWare images (virtualization) running Windows, that run Java (virtualization) that run packaged applications that need to interconnect with different packaged applications via middleware using webservices to create composit applications (virtualization)... Why not one solution for all processes?
 
 This project's goal: Create a platform to minimize cost and powerusage and maximize flexibility, performance and usability for a full Javascript boilerplate (MongoDB,Express,Angular,Node)
+
+## What are we building?
+
+Back to [Table of Contents](#table-of-contents)
+
+This project sets up a quick application, using @angular/cli, with a REST API connected to a MongoDB database. 
+
+* On port 3000, Node serves the REST API. To monitor for changes, nodemon is used.
+* On port 4200, the front-end is served. To monitor changes, we use webpack that is shipped with angular/cli. 
+* Because the front-end cannot access the REST API directly (since this is CORS) we use webpack to proxy for the REST API. We use `ng serve --proxy-config proxy.conf.json`
+* To allow webpack to serve the networking, we add `--host 0.0.0.0 --disable-host-check` to the `ng serve command`
+* We allow the project's code to be accessed via a samba share, however if you are accessing the code from the web, this is very slow and unstable
+* To overcome having to push back and forth code, we use [NoIDE](#noide).
 
 ## The project's offering:
 
@@ -487,7 +501,7 @@ This uses the `package.json` command start that in turn contains the following c
 * To enable webpack to serve the network outside of localhost, we need to add `--host 0.0.0.0` and disable the host check
 * building the code for the first time takes a while (~30 sec), but the incremental transpile is pretty fast 
 
-The above commands don't return a console, so you need to open new putty sessions. If you are ok with that, seeing the live update in the putty screens, you are done. If not, please read the Serving chapter. After the Serving chapter noide is discussed. If you don't want to serve `node` and `angular` from `forever` you can go directly to the `noide` part. From `noide` you can serve both the REST API back-end and the front-end.
+The above commands don't return a console, so you need to open new putty sessions. If you are ok with that, seeing the live update in the putty screens, you are done. If not, please read the Serving chapter. After the Serving chapter [NoIDE](#noide) is discussed. If you don't want to serve `node` and `angular` from `forever` you can go directly to the `noide` part. From `noide` you can serve both the REST API back-end and the front-end.
 
 # Serving
 
@@ -567,6 +581,10 @@ First we need to install forever if you havn't already.
 If you want to develop from anywhere using only putty, you need to do the following;
 
 Get noide: `git clone https://github.com/rkristelijn/noide.git`
+
+This only pull the code from the web. You need to install the dependacies that are described in `package.josn`
+
+`npm install`
 
 Start noide from `~/lean-mean` using: `forever start -c "sudo node ../noide/index.js" ./`
 
