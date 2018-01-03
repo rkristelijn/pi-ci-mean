@@ -1,5 +1,5 @@
 # Introduction
-These are my notes to install a full blown mean stack (MongoDB, Express, Angular 4+, Node 8+) on the Raspberry Pi. I keep these notes to be able to quickly set up, or reinstall my environment. 
+These are my notes to install a full blown MEAN stack (MongoDB, Express, Angular, Node) on the Raspberry Pi. I keep these notes to be able to quickly set up, or reinstall my environment. 
 
 # Table of Contents
 0. [Approach Vector](#approach-vector)
@@ -16,6 +16,20 @@ These are my notes to install a full blown mean stack (MongoDB, Express, Angular
 11. [QEMU](#qemu)
 12. [x86 ISO](#x86-iso)
 13. [Cheat Sheets](#cheat-sheets)
+
+# Time
+
+In under one hour you will be able to start development on your raspberry pi, starting from NOOBS install.
+
+# Versions
+
+|  Item | Version | Command |
+|  ------ | ------ | ------ |
+|  Node | v9.3.0 | `node -v` |
+|  NPM | 5.5.1 | `npm -v` |
+|  angular/cli | 1.6.3 | `ng -v` |
+|  Raspbian | GNU/Linux 9 (stretch) | `cat /etc/os-release` |
+|  MongoDB |  v2.4.14 | `mongod --version` |
 
 # APPROACH VECTOR
 
@@ -44,25 +58,7 @@ This project sets up a quick application, using @angular/cli, with a REST API co
 
 Back to [Table of Contents](#table-of-contents)
 
-Via the web 1 (VSC):
-
-                            U:\     +---------------+
-        +-------------------+  +----> sFTP netdrive +-----------+      proxy.conf
-        | Visual Studio Code|  |    +---------------+           |      +-----+
-        |                   +--+   +------------+   4200        |      |     |
-        +-------------------+      |    Putty   +--------+-----------------------+
-        | Windows 10        +------> ssh tunnel |        |      |      |     |   |
-        |                   |      +------------+   +--v------+--+---v-----+---v-+
-        +-------------------+                       | ssh  |sFTP | Node |webpack |
-                                                    +------------+---------------+         +------------+
-                                                    |          File System       +--------->Github.com  |
-                                                    +----------------------------+         |            |
-                                                    |         Raspberry pi       |         +------------+
-                                                    |                            |
-                                                    |                            |
-                                                    +----------------------------+
-                                                    
-Via the web 2 (noide):
+Via the web using [noide](#noide):
 
     +---------------------+
     |  noide in chrome    |
@@ -99,6 +95,25 @@ Via LAN:
 ## Alternatives
 
 I have also tried the following offerings:
+
+### Via the web 1 (VSC):
+
+                            U:\     +---------------+
+        +-------------------+  +----> sFTP netdrive +-----------+      proxy.conf
+        | Visual Studio Code|  |    +---------------+           |      +-----+
+        |                   +--+   +------------+   4200        |      |     |
+        +-------------------+      |    Putty   +--------+-----------------------+
+        | Windows 10        +------> ssh tunnel |        |      |      |     |   |
+        |                   |      +------------+   +--v------+--+---v-----+---v-+
+        +-------------------+                       | ssh  |sFTP | Node |webpack |
+                                                    +------------+---------------+         +------------+
+                                                    |          File System       +--------->Github.com  |
+                                                    +----------------------------+         |            |
+                                                    |         Raspberry pi       |         +------------+
+                                                    |                            |
+                                                    |                            |
+                                                    +----------------------------+
+                                                    
 
 ### Local MEAN stack
 
@@ -281,7 +296,7 @@ What is `apt-get`? > APT (the Advanced Packaging Tool) is an evolution of the De
 What is `sudo`? > sudo ("superuser do") allows a user with proper permissions to execute a command as another user, such as the superuser. [source](https://www.computerhope.com/unix/sudo.htm)
 
 **In Short**:
-
+0. `sudo apt-get update` < trust me, do this first
 1. `sudo apt-get install samba samba-common-bin`
 2. `sudo nano /etc/samba/smb.conf`
 3. Edit below, save and exit:
@@ -409,7 +424,7 @@ Before we continue, check if our processor is up to the task:
 
 Good to go, include the latest binaries for node:
 
-`curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -`
+`curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -`
 
 Install node:
 
@@ -418,9 +433,9 @@ Install node:
 ## Test:
 
     pi@1337-pi:~ $ node -v
-    v8.5.0
+    v9.3.0
     pi@1337-pi:~ $ npm -v
-    5.3.0
+    5.5.1
 
 ## Angular
 
@@ -455,8 +470,8 @@ What is `angular/cli`? > Angular/cli used to be called angular-cli. So don't ins
      / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
     /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
                    |___/
-    @angular/cli: 1.4.3
-    node: 8.5.0
+    @angular/cli: 1.6.3
+    node: 9.3.0
     os: linux arm
 
 Note; i had to restart the installation as it was locked trying to update .node-gyp
