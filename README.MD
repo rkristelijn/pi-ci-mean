@@ -29,7 +29,7 @@ In under one hour you will be able to start development on your raspberry pi, st
 |  NPM | 5.6.0 | `npm -v` |
 |  angular/cli | 1.6.7 | `ng -v` |
 |  Raspbian | GNU/Linux 9 (stretch) | `cat /etc/os-release` |
-|  MongoDB |  v2.4.14 | `mongod --version` |
+|  MongoDB |  v3.0.14 | `mongod --version` |
 |  Angular |  v5 | `? --version` |
 
 Disclaimer: The above versions can be different from the console output that I copied inline. Please ignore them and look at above table.
@@ -394,9 +394,42 @@ Back to [Table of Contents](#table-of-contents)
 MongoDB is a popular open-source document-oriented database developed by 10gen, later called the MongoDB Inc. In this case, documents are created and stored in BSON files, Binary JSON (JavaScript Object Notation) format, so all JS types of data are supported. That being the case, MongoDB is often applied for Node.js projects. Besides of that, JSON enables transferring data between servers and web apps with the use of the human-readable format. It is also a better option, when it comes to storage capacity and speed, as it offers greater efficiency and reliability.
 One of the top benefits offered by MongoDB is the use of dynamic schemas that eliminates the need to pre-define the structure, like fields or value types. Such model allows hierarchical relationships representation, array storage, and ability to change the records structure by simply adding or deleting fields. This NoSQL solution comes with embedding, auto-sharding, and on-board replication for better scalability and high availability. [source](https://hackernoon.com/mongodb-vs-mysql-comparison-which-database-is-better-e714b699c38b)
 
+The following installs MongoDB 2.4; `sudo apt-get install mongodb-server`. This is not what we want, because both the latest versions of `mongoose` and `mongodb` that are used to connect Node to MongoDB will start whining the can't connect. So we have two options: install earlier versions of `mongoose`, e.g. 4.x or update MongoDB 3.
+
+If you want to install MongoDB 3.x you have two options:
+
+1. Install from scratch, deal with: creating a group, a user, putting all in right directory, make sure it runs for the right user, make sure it starts at boot
+2. Patch the MongoDB 2.4 installation that takes care of all above
+
+I go for 2, here's how it's done;
+
 `sudo apt-get install mongodb-server`
 
-Right away I see `mongod` running in `top`. Cool. Also after `sudo reboot` it's there, so it's starting automatically.
+Right away I see `mongod` running in `top`. Cool. Also after `sudo reboot` (don't do it now [a]) it's there, so it's starting automatically and we see it also listed in `sudo netstat -ltpn`.
+
+Now we need to replace the MongoDB 2.4 binaries with the 3.x versions.
+
+From [this tutorial](http://andyfelong.com/2017/08/mongodb-3-0-14-for-raspbian-stretch/) we can find the url for the latests binaries for ARM Raspbian Stretch
+
+`pi@rpi2:~ $ wget http://andyfelong.com/downloads/mongodb_stretch_3_0_14_core.zip`
+
+From here we can simply extract the 3 binaries using:
+
+`unzip mongodb_stretch_3_0_14_core.zip`
+
+Before you can toch the binaries, you need to stop the mongod service: `sudo service mongodb stop` (I did tell you to not restart right? [a])
+
+If you want to keep the 2.4 versions: rename them:
+
+`mv /usr/bin/mongo /usr/bin/mongo2.4`
+`mv /usr/bin/mongod /usr/bin/mongod2.4`
+`mv /usr/bin/mongos /usr/bin/mongos2.4`
+
+Now we move the 3.x versions:
+
+`mv mongo* /usr/bin/`
+
+Now you can start the service if it was not started already, by a reboot. `sudo service mongodb start`
 
 ### Quick check
 
@@ -439,7 +472,9 @@ If we just install node via apt-get we get an old version.
     Bezig met oplijsten... Klaar
     nodejs/stable 4.8.2~dfsg-1 armhf
 
-We want the latest stable node and we use the instructions from [this howto](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#install-node).
+We want the latest stable node and we use the instructions from [this howto](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#install-node). Raspbian allows us to add PPAs to our repo so we can get binaries that did not yet passed the Raspbian tests. This does not mean that PPAs are not stable. Testing packages that ship with Raspbian take a lot of time.
+
+What is `PPA`? > PPA stands for personal package archives. It allows us to install the latest version of any software in Linux Mint or Ubuntu from launchpad by adding to repository.
 
 Before we continue, check if our processor is up to the task:
 
