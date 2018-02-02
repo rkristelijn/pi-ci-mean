@@ -322,7 +322,29 @@ Configure your git instance:
   `git config --global user.email "you@example.com"`
   `git config --global user.name "Your Name"`
 
-Todo: [have git or ssh](https://github.com/rkristelijn/pi-ci-mean/issues/2) [remember my password](https://stackoverflow.com/questions/21956750/secure-push-and-pull-with-no-password-git)
+[have git or ssh](https://github.com/rkristelijn/pi-ci-mean/issues/2) [remember my password](https://stackoverflow.com/questions/21956750/secure-push-and-pull-with-no-password-git)
+
+### Remember password for github
+
+Beware that saving passwords is not best practice. However if you are doing a lots of git work, it can be annoying to constantly type your github username and password. It is important to understand that skipping the password only works for ssh. You need to clone using ssh instead of https.
+
+First you need to generate a public and private key:
+
+`ssh-keygen -t rsa -b 4096 -C "email_from@github.com"`
+
+Next you need to make sure that your ssh-agent is running
+
+`eval $(ssh-agent -s)`
+
+Now we add the key to the agent
+
+`ssh-add ~/.ssh/id_rsa`
+
+Next we need to add the public key to github, with your browser, navigate to github.com, to your account and open ['SSH and GPG keys'](https://github.com/settings/keys) and paste the contents of `~/.ssh/id_rsa.pub` using:
+
+`cat ~/.ssh/id_rsa.pub` 
+
+### Test by clonign a repo
 
 From the /home/pi directory (cd ~) clone a git repo:
 
