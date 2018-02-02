@@ -30,6 +30,7 @@ In under one hour you will be able to start development on your raspberry pi, st
 |  angular/cli | 1.6.3 | `ng -v` |
 |  Raspbian | GNU/Linux 9 (stretch) | `cat /etc/os-release` |
 |  MongoDB |  v2.4.14 | `mongod --version` |
+|  Angular |  v5 | `? --version` |
 
 # APPROACH VECTOR
 
