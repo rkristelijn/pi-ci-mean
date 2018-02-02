@@ -25,8 +25,8 @@ In under one hour you will be able to start development on your raspberry pi, st
 
 |  Item | Version | Command |
 |  ------ | ------ | ------ |
-|  Node | v9.3.0 | `node -v` |
-|  NPM | 5.5.1 | `npm -v` |
+|  Node | v9.5.0 | `node -v` |
+|  NPM | 5.6.0 | `npm -v` |
 |  angular/cli | 1.6.3 | `ng -v` |
 |  Raspbian | GNU/Linux 9 (stretch) | `cat /etc/os-release` |
 |  MongoDB |  v2.4.14 | `mongod --version` |
@@ -449,6 +449,14 @@ Good to go, include the latest binaries for node:
 
 `curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -`
 
+Check if we are now going to install the latest version:
+
+`apt list nodejs`
+
+nodejs/onbekend 9.5.0-1nodesource1 armhf
+
+splendid.
+
 Install node:
 
 `sudo apt-get install nodejs`
@@ -456,9 +464,9 @@ Install node:
 ## Test:
 
     pi@1337-pi:~ $ node -v
-    v9.3.0
+    v9.5.0
     pi@1337-pi:~ $ npm -v
-    5.5.1
+    5.6.0
 
 ## Angular
 
