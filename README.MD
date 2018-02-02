@@ -27,10 +27,12 @@ In under one hour you will be able to start development on your raspberry pi, st
 |  ------ | ------ | ------ |
 |  Node | v9.5.0 | `node -v` |
 |  NPM | 5.6.0 | `npm -v` |
-|  angular/cli | 1.6.3 | `ng -v` |
+|  angular/cli | 1.6.7 | `ng -v` |
 |  Raspbian | GNU/Linux 9 (stretch) | `cat /etc/os-release` |
 |  MongoDB |  v2.4.14 | `mongod --version` |
 |  Angular |  v5 | `? --version` |
+
+Disclaimer: The above versions can be different from the console output that I copied inline. Please ignore them and look at above table.
 
 # APPROACH VECTOR
 
