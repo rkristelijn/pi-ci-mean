@@ -421,15 +421,21 @@ Before you can toch the binaries, you need to stop the mongod service: `sudo ser
 
 If you want to keep the 2.4 versions: rename them:
 
-`mv /usr/bin/mongo /usr/bin/mongo2.4`
-`mv /usr/bin/mongod /usr/bin/mongod2.4`
-`mv /usr/bin/mongos /usr/bin/mongos2.4`
+`sudo service mongodb stop` - if mongodb was running
+
+`sudo mv /usr/bin/mongo /usr/bin/mongo2.4`
+
+`sudo mv /usr/bin/mongod /usr/bin/mongod2.4`
+
+`sudo mv /usr/bin/mongos /usr/bin/mongos2.4`
 
 Now we move the 3.x versions:
 
 `mv mongo* /usr/bin/`
 
-Now you can start the service if it was not started already, by a reboot. `sudo service mongodb start`
+Now you can start the service if it was not started already, by a reboot or
+
+`sudo service mongodb start`
 
 ### Quick check
 
