@@ -989,6 +989,44 @@ After creation:
         - Guest IP: 10.0.2.15 (or any other gotten from `ifconfig | grep inet`)
         - Guest port: 22
 
+Let's see the performance on Windows 10 Enterprise Intel(R) Core(TM) i5-7300U CPU @ 2.60Ghz 2.70Ghz / 8GB ram 64 bit
+
+    Running CPU test...
+    total time: 3.1638s
+    min: 0.30ms
+    avg: 1.26ms
+    max: 23.91ms
+    bash: line 39: vcgencmd: command not found
+
+    Running THREADS test...
+    total time: 13.9372s
+    min: 0.53ms
+    avg: 5.57ms
+    max: 78.33ms
+    bash: line 44: vcgencmd: command not found
+
+    Running MEMORY test...
+    Operations performed: 3145728 (3000384.46 ops/sec)
+    3072.00 MB transferred (2930.06 MB/sec)
+    total time: 1.0484s
+    min: 0.00ms
+    avg: 0.00ms
+    max: 15.76ms
+    bash: line 49: vcgencmd: command not found
+
+    Running HDPARM test...
+    /dev/mmcblk0: No such file or directory
+    bash: line 54: vcgencmd: command not found
+
+    Running DD WRITE test...
+    536870912 bytes (537 MB, 512 MiB) copied, 2.09196 s, 257 MB/s
+    bash: line 59: vcgencmd: command not found
+
+    Running DD READ test...
+    536870912 bytes (537 MB, 512 MiB) copied, 0.919696 s, 584 MB/s
+    bash: line 64: vcgencmd: command not found
+
+
 Also it is possible to run a raspberry pi from a NAS using an [x86 ISO](http://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2017-06-23/). 
 
     Raspberry Pi Benchmark Test
