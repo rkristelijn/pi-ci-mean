@@ -952,6 +952,43 @@ A comparisson table:
 
 Todo: [explore x68 ISO image](https://github.com/rkristelijn/pi-ci-mean/issues/4)
 
+What if you don't have a pi, what if you can't connect to your pi and you only have Windows and you still want to get your own dev environment? You can using these steps:
+
+## Oracle VM VirtualBox
+First you need to download your software: [VirtualBox](https://www.virtualbox.org/wiki/Downloads), I choose Windows hosts v 5.2.6. Note, when you install, the installation tries to elevate rights. I needed to rightclick the installation file and choose 'Install as Administrator'.
+
+After the installation, you can get an x86 iso file to boot your machine from [downloads.raspberrypi.org](http://downloads.raspberrypi.org/rpd_x86/images/). Note here, that you need the x86-build binary and the arm-versions won't work without QEMU.
+
+Now click:
+- New Image
+  - Name: rpi
+  - Type: Linux
+  - Other Linux 64 bit
+- Memory
+  - I choose 2048 MB
+- Disk
+  - New virtual disk
+- File
+  - vdi
+  - dynamically allocated
+  - 8 GB
+
+After creation:
+  - Settings
+    - Storage
+      - IDE: (navigate to iso file downloaded above)
+      - flag: Live CD/DVD
+  - Network
+    - NAT (Network Address Translation)
+    - Advanced
+      - Port forwarding
+        - Name: ssh
+        - Protocol: TCP
+        - Host IP: 127.0.0.1
+        - Host Port: 2222
+        - Guest IP: 10.0.2.15 (or any other gotten from `ifconfig | grep inet`)
+        - Guest port: 22
+
 Also it is possible to run a raspberry pi from a NAS using an [x86 ISO](http://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2017-06-23/). 
 
     Raspberry Pi Benchmark Test
