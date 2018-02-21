@@ -950,11 +950,11 @@ A comparisson table:
 
 # x86 ISO
 
-Todo: [explore x68 ISO image](https://github.com/rkristelijn/pi-ci-mean/issues/4)
-
 What if you don't have a pi, what if you can't connect to your pi and you only have Windows and you still want to get your own dev environment? You can using these steps:
 
 ## Oracle VM VirtualBox
+[This is a wonderful tutorial](http://www.aoakley.com/articles/2017-07-04-raspbian-x86-virtualbox.php) about installing Raspbian Stretch x86 on Virtual Box, including the guest addition and sharing a folder. But for the sake of completeness, here are my notes. 
+
 First you need to download your software: [VirtualBox](https://www.virtualbox.org/wiki/Downloads), I choose Windows hosts v 5.2.6. Note, when you install, the installation tries to elevate rights. I needed to rightclick the installation file and choose 'Install as Administrator'.
 
 After the installation, you can get an x86 iso file to boot your machine from [downloads.raspberrypi.org](http://downloads.raspberrypi.org/rpd_x86/images/). Note here, that you need the x86-build binary and the arm-versions won't work without QEMU.
